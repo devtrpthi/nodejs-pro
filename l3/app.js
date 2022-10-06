@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-app.get('/ping', (request,response) => {
+app.get('/', (request,response) => {
   response.send('pong');
 
 });
