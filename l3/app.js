@@ -1,22 +1,21 @@
-const express = require('express');
+var express = require('express');
+var cors = require('cors');
 
-const greetMiddleware  = require('./greet.js');
+var app = express();
 
-class greetingService {
-  constructor(greeting = 'Hello') {
-    this.greeting = greeting;
+app.use(cors());
+
+var port = process.env.PORT || 3000;
+
+app.get('/', function(req,res) {
+  var info = {
+    'string_value': 'Devesh',
+    'number_value': 69
   }
+})
+res.json(info);
 
-  createGreeting(name){
-    return `$(this.greeting), $(name)!`;
-  }
-}
+  app.listen(port, function() {
+    console.log('Nodejs is listening on port' + port)
+  })
 
-express()
-.use('/api/vi/service1', greetMiddleware({
-    service: new greetingService('Hello'),
-  }))
-.use('/api/v1/service2', greetMiddleware({ 
-    service: new greetingService('Hi'),
-  }))
-.listen(8080);
