@@ -12,9 +12,8 @@ app.get('/', function(req,res) {
     'string_value': 'Devesh',
     'number_value': 69
   }
-})
 res.json(info);
-
+})
   app.listen(port, function() {
     console.log('Nodejs is listening on port' + port)
   })
