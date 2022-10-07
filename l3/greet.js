@@ -6,13 +6,9 @@ module.exports = function(options = {}) {
     const {service} = options;
 
   router.get('/greet', (req,res,next) => {
-    res.end(service.createGreeting(req.query.name || 'Stranger'))
-  })
+    res.end(service.createGreeting(req.query.name || 'Stranger'));
+  });
 
+  return router;
+};
 
-
-
-
-
-
-}
