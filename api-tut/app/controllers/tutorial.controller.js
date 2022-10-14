@@ -74,7 +74,25 @@ exports.update = (req,res) => {
 };
 
 exports.delete = (req,res) => {
+  const id = req.params.id;
 
+  Tutorial.findByIdAndRemove(id)
+    .then(data => {
+      if(!data) {
+        res.status(404).send({
+          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+        });
+      } else {
+        res.send({
+          message: 'Tutorial was deleted successfully!'
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: 'Could not delete Tutorial with id=' +id
+      });
+    });
 };
 
 exports.deleteAll = (req,res) => {
